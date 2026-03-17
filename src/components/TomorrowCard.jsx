@@ -30,7 +30,7 @@ const RainyPersonIllustration = () => (
 export default function TomorrowCard() {
   // 👉 Later: replace with real tomorrow forecast from API
   const forecast = {
-    city: "Dhaka, Bangladesh",
+    city: "Chennai, India",
     temp: "25°C",
     condition: "Rainy",
   };

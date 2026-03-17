@@ -5,8 +5,8 @@ const SunnyIcon = () => (
 );
 
 const cities = [
-  { name: "New York", condition: "Sunny",  high: "22°C", low: "19°C" },
-  { name: "London",   condition: "Bright", high: "24°C", low: "26°C" },
+  { name: "Bengaluru ", condition: "Sunny",  high: "22°C", low: "19°C" },
+  { name: "Mumbai",   condition: "Bright", high: "24°C", low: "26°C" },
 ];
 
 export function CityList() {

@@ -25,17 +25,23 @@ export default function TopBar() {
 
       {/* Avatar + Name */}
       <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 160 }}>
-        <div style={{
-          width: 38, height: 38, borderRadius: "50%",
-          background: "linear-gradient(135deg,#667eea,#764ba2)",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          color: "white", fontWeight: 800, fontSize: 15, flexShrink: 0,
-        }}>
-          U
-        </div>
+
+      {/* Initials Avatar */}
+<div style={{
+  width: 38, height: 38,
+  borderRadius: "50%",
+  background: "linear-gradient(135deg, #f093fb, #f5576c)",
+  display: "flex", alignItems: "center", justifyContent: "center",
+  color: "white", fontWeight: 800, fontSize: 14,
+  flexShrink: 0,
+  boxShadow: "0 2px 8px rgba(240,147,251,0.4)",
+}}>
+  MB
+</div>
+        {/* Name */}
         <div>
           <div style={{ fontSize: 11, color: "#aaa", lineHeight: 1 }}>Hello,</div>
-          <div style={{ fontSize: 14, fontWeight: 800, color: "#1a1a2e" }}>Your Name</div>
+          <div style={{ fontSize: 14, fontWeight: 800, color: "#1a1a2e" }}>Mageshwari</div>
         </div>
       </div>
 
@@ -60,19 +66,51 @@ export default function TopBar() {
 
       {/* Action Icons */}
       <div style={{ display: "flex", gap: 8 }}>
-        {[icons.calendar, icons.chat, icons.bell].map((d, i) => (
-          <div key={i} style={{
-            width: 36, height: 36, borderRadius: 10,
-            background: "#f7f8fa",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            cursor: "pointer",
-            border: "1.5px solid #eef0f3",
-          }}>
-            <Icon d={d} size={16} color="#666" />
-          </div>
-        ))}
-      </div>
 
+        {/* Calendar */}
+        <div style={{
+          width: 36, height: 36, borderRadius: 10,
+          background: "#f7f8fa",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          cursor: "pointer", border: "1.5px solid #eef0f3",
+        }}>
+          <Icon d={icons.calendar} size={16} color="#666" />
+        </div>
+
+        {/* Chat */}
+        <div style={{
+          width: 36, height: 36, borderRadius: 10,
+          background: "#f7f8fa",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          cursor: "pointer", border: "1.5px solid #eef0f3",
+        }}>
+          <Icon d={icons.chat} size={16} color="#666" />
+        </div>
+
+        {/* Bell with red badge */}
+        <div style={{
+          width: 36, height: 36, borderRadius: 10,
+          background: "#f7f8fa",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          cursor: "pointer", border: "1.5px solid #eef0f3",
+          position: "relative",
+        }}>
+          <Icon d={icons.bell} size={16} color="#666" />
+          <div style={{
+            position: "absolute",
+            top: -4, right: -4,
+            width: 16, height: 16,
+            background: "#e74c3c",
+            borderRadius: "50%",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 9, fontWeight: 800, color: "white",
+            border: "2px solid white",
+          }}>
+            3
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }

@@ -21,7 +21,7 @@ const SunCloudy = () => (
 export default function CurrentWeather() {
   // 👉 Later: replace these with real API data
   const weather = {
-    city: "Dhaka, Bangladesh",
+    city: "Chennai, India",
     condition: "Now",
     temp: "25°C",
     feelsLike: "26°C",
