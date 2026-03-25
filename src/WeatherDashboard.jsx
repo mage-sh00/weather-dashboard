@@ -1,57 +1,176 @@
-import { useState } from "react";
-import Sidebar          from "./components/Sidebar";
-import TopBar           from "./components/TopBar";
-import CurrentWeather   from "./components/CurrentWeather";
-import WeatherMap       from "./components/WeatherMap";
-import { CityList, HumidityCard } from "./components/CityList";
-import HourlyTemp       from "./components/HourlyTemp";
-import TomorrowCard     from "./components/TomorrowCard";
+import { useState, useEffect } from "react";
+import Sidebar from "./components/Sidebar";
+import TopBar from "./components/TopBar";
+import CurrentWeather from "./components/CurrentWeather";
+import WeatherMap from "./components/WeatherMap";
+import { CityList } from "./components/CityList";
+import HourlyTemp from "./components/HourlyTemp";
+import TomorrowCard from "./components/TomorrowCard";
 
 export default function WeatherDashboard() {
-  return (
-    <div style={{
+  const [city, setCity] = useState("Chennai");
+  const [weather, setWeather] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
+
+  // loading + error
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // mobile detection
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // styles
+  const getStyles = (darkMode, isMobile) => ({
+    app: {
       minHeight: "100vh",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      background: "linear-gradient(135deg, #b2dde0 0%, #c8dfc0 50%, #d4c8b8 100%)",
-      fontFamily: "'Nunito', 'Segoe UI', sans-serif",
-      padding: 24,
-    }}>
-      <div style={{
-        width: "100%", maxWidth: 960,
-        background: "#f4f6f8",
-        borderRadius: 28,
-        boxShadow: "0 24px 80px rgba(0,0,0,0.22)",
-        overflow: "hidden",
-        border: "3px solid #2c3e50",
-        display: "flex", flexDirection: "column",
-      }}>
+      display: "flex",
+      alignItems: "flex-start",
+      justifyContent: "center",
+      background: darkMode
+        ? "linear-gradient(135deg, #0f172a, #1e293b)"
+        : "linear-gradient(135deg, #b2dde0, #c8dfc0, #d4c8b8)",
+      transition: "0.3s ease",
+    },
 
-        <TopBar />
+    container: {
+      width: "100%",
+      maxWidth: isMobile ? "100%" : 960,
+      padding: isMobile ? 10 : 20,
+    },
 
-        <div style={{ display: "flex", flex: 1 }}>
-          <Sidebar />
+    card: {
+      width: "100%",
+      borderRadius: isMobile ? 16 : 28,
+      padding: 10,
+      background: darkMode
+        ? "rgba(30, 41, 59, 0.7)"
+        : "#f4f6f8",
+      backdropFilter: darkMode ? "blur(12px)" : "none",
+      boxShadow: "0 24px 80px rgba(0,0,0,0.22)",
+      border: darkMode
+        ? "1px solid rgba(255,255,255,0.1)"
+        : "3px solid #2c3e50",
+      display: "flex",
+      flexDirection: "column",
+      overflow: "hidden",
+    },
 
-          <div style={{ flex: 1, padding: 18, display: "flex", flexDirection: "column", gap: 14 }}>
+    row: {
+      display: "flex",
+      flex: 1,
+      flexDirection: isMobile ? "column" : "row",
+    },
 
-            {/* ROW 1 */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-              <CurrentWeather />
-              <WeatherMap />
+    main: {
+      flex: 1,
+      padding: 18,
+      display: "flex",
+      flexDirection: "column",
+      gap: 14,
+    },
+
+    grid1: {
+      display: "grid",
+      gridTemplateColumns: isMobile ? "1fr" : "2fr 3fr",
+      gap: 14,
+    },
+
+    grid2: {
+      display: "grid",
+      gridTemplateColumns: isMobile ? "1fr" : "2fr 3fr 2fr",
+      gap: 14,
+    },
+  });
+
+  // fetch weather (cleaned)
+  useEffect(() => {
+    const fetchWeather = async () => {
+      setLoading(true);
+      setError(null);
+try {
+  const apiKey = process.env.REACT_APP_WEATHER_KEY;
+
+  const res = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+  );
+
+  const data = await res.json();
+       
+
+        if (data.cod !== 200) {
+          setError("City not found");
+          return;
+        }
+
+        setWeather(data);
+      } catch (err) {
+        setError("Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchWeather();
+  }, [city]);
+
+  const styles = getStyles(darkMode, isMobile);
+
+  return (
+    <div style={styles.app}>
+      <div style={styles.container}>
+        <div style={styles.card}>
+
+          <TopBar
+            onSearch={(city) => setCity(city)}
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+          />
+
+          <div style={styles.row}>
+            {!isMobile && <Sidebar />}
+
+            <div style={styles.main}>
+
+              {/* ERROR */}
+              {error && (
+                <div style={{ textAlign: "center", color: "red" }}>
+                  <p>{error}</p>
+                </div>
+              )}
+
+              {/* LOADING */}
+              {loading ? (
+                <div style={{ textAlign: "center", padding: 20 }}>
+                  <p>Loading weather data...</p>
+                </div>
+              ) : (
+                <>
+                  <div style={styles.grid1}>
+                    <CurrentWeather weather={weather} />
+                    <WeatherMap />
+                  </div>
+
+                  <div style={styles.grid2}>
+                    <CityList />
+                    <HourlyTemp />
+                    <TomorrowCard />
+                  </div>
+                </>
+              )}
+
             </div>
-
-            {/* ROW 2 */}
-            <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1.3fr 1fr", gap: 14 }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                <CityList />
-                <HumidityCard />
-              </div>
-              <HourlyTemp />
-              <TomorrowCard />
-            </div>
-
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   );
