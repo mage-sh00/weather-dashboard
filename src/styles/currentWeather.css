@@ -1,0 +1,103 @@
+.weather-card {
+  border-radius: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #fff9f0 0%, #fff3e0 50%, #fde8cc 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+/* City */
+.weather-city {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #888;
+  font-weight: 600;
+}
+
+/* Title */
+.weather-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+/* Description */
+.weather-desc {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Icon */
+.weather-icon {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.weather-icon img {
+  width: 80px;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+/* Temperature */
+.weather-temp {
+  font-size: 52px;
+  font-weight: 900;
+  color: #1a1a2e;
+  line-height: 1;
+  margin-top: 8px;
+}
+
+/* Feels like */
+.weather-feels {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Stats */
+.weather-stats {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* Boxes */
+.weather-box {
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.weather-box span {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+/* Variants */
+.weather-box.green {
+  background: #b8e994;
+  color: #3a7a1a;
+}
+
+.weather-box.green span {
+  color: #5a9a3a;
+}
+
+.weather-box.gray {
+  background: #f0f0f0;
+  color: #444;
+}
+
+.weather-box.gray span {
+  color: #888;
+}

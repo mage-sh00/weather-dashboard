@@ -12,11 +12,9 @@ export default function WeatherDashboard() {
   const [weather, setWeather] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
 
-  // loading + error
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // mobile detection
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -28,7 +26,6 @@ export default function WeatherDashboard() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // styles
   const getStyles = (darkMode, isMobile) => ({
     app: {
       minHeight: "100vh",
@@ -91,29 +88,32 @@ export default function WeatherDashboard() {
     },
   });
 
-  // fetch weather (cleaned)
   useEffect(() => {
     const fetchWeather = async () => {
       setLoading(true);
       setError(null);
-try {
-  const apiKey = process.env.REACT_APP_WEATHER_KEY;
 
-  const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-  );
+      try {
+        const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
+console.log("API KEY FROM ENV:", apiKey);
+        const formattedCity =
+          city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
 
-  const data = await res.json();
-       
+        const res = await fetch(
+  `https://api.openweathermap.org/data/2.5/weather?q=${formattedCity}&appid=${apiKey}&units=metric`
+);
+        const data = await res.json();
 
         if (data.cod !== 200) {
           setError("City not found");
+          setWeather(null); // ✅ important fix
           return;
         }
 
         setWeather(data);
       } catch (err) {
         setError("Something went wrong");
+        setWeather(null);
       } finally {
         setLoading(false);
       }

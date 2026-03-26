@@ -141,11 +141,14 @@ export default function TopBar({ onSearch, darkMode, setDarkMode }) {
             color: darkMode ? "#eee" : "#555",
             width: "100%",
           }}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && e.target.value.trim() !== "") {
-              onSearch(e.target.value);
-            }
-          }}
+        onKeyDown={(e) => {
+  if (e.key === "Enter") {
+    const value = e.target.value.trim();
+    if (value !== "") {
+      onSearch(value);
+    }
+  }
+}}
         />
       </div>
     </div>
