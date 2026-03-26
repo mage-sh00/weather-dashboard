@@ -21,6 +21,13 @@ https://weather-dashboard-2fppq2i81-mage-sh00s-projects.vercel.app
 * CSS
 * Vercel (Deployment)
 
+  
+Preview
+
+![Weather Dashboard](./image.png)
+
+
+
 ## Getting Started
 
 Clone the repository:
