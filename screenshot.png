@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3008/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="icon" href="http://localhost:3008/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Web site created using create-react-app">
+    <link rel="apple-touch-icon" href="http://localhost:3008/logo192.png">
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3008/manifest.json">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  <script defer="" src="./screenshot_files/bundle.js.download"></script><style>body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9pbmRleC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxTQUFTO0VBQ1QsVUFBVTtFQUNWLDZDQUE2QztBQUMvQyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xyXG4gIG1hcmdpbjogMDtcclxuICBwYWRkaW5nOiAwO1xyXG4gIGZvbnQtZmFtaWx5OiAnTnVuaXRvJywgJ1NlZ29lIFVJJywgc2Fucy1zZXJpZjtcclxufSJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>.weather-card {
+  border-radius: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #fff9f0 0%, #fff3e0 50%, #fde8cc 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+/* City */
+.weather-city {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #888;
+  font-weight: 600;
+}
+
+/* Title */
+.weather-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+/* Description */
+.weather-desc {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Icon */
+.weather-icon {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.weather-icon img {
+  width: 80px;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+/* Temperature */
+.weather-temp {
+  font-size: 52px;
+  font-weight: 900;
+  color: #1a1a2e;
+  line-height: 1;
+  margin-top: 8px;
+}
+
+/* Feels like */
+.weather-feels {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Stats */
+.weather-stats {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* Boxes */
+.weather-box {
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.weather-box span {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+/* Variants */
+.weather-box.green {
+  background: #b8e994;
+  color: #3a7a1a;
+}
+
+.weather-box.green span {
+  color: #5a9a3a;
+}
+
+.weather-box.gray {
+  background: #f0f0f0;
+  color: #444;
+}
+
+.weather-box.gray span {
+  color: #888;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9zdHlsZXMvY3VycmVudFdlYXRoZXIuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQW1CO0VBQ25CLGFBQWE7RUFDYiwwRUFBMEU7RUFDMUUsMENBQTBDO0VBQzFDLGFBQWE7RUFDYixzQkFBc0I7RUFDdEIsUUFBUTtFQUNSLGtCQUFrQjtFQUNsQixnQkFBZ0I7RUFDaEIsaUJBQWlCO0FBQ25COztBQUVBLFNBQVM7QUFDVDtFQUNFLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsUUFBUTtFQUNSLGVBQWU7RUFDZixXQUFXO0VBQ1gsZ0JBQWdCO0FBQ2xCOztBQUVBLFVBQVU7QUFDVjtFQUNFLGVBQWU7RUFDZixnQkFBZ0I7RUFDaEIsY0FBYztBQUNoQjs7QUFFQSxnQkFBZ0I7QUFDaEI7RUFDRSxlQUFlO0VBQ2YsV0FBVztBQUNiOztBQUVBLFNBQVM7QUFDVDtFQUNFLGtCQUFrQjtFQUNsQixXQUFXO0VBQ1gsU0FBUztBQUNYOztBQUVBO0VBQ0UsV0FBVztFQUNYLGtEQUFrRDtBQUNwRDs7QUFFQSxnQkFBZ0I7QUFDaEI7RUFDRSxlQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLGNBQWM7RUFDZCxjQUFjO0VBQ2QsZUFBZTtBQUNqQjs7QUFFQSxlQUFlO0FBQ2Y7RUFDRSxlQUFlO0VBQ2YsV0FBVztBQUNiOztBQUVBLFVBQVU7QUFDVjtFQUNFLGFBQWE7RUFDYixTQUFTO0VBQ1QsZUFBZTtBQUNqQjs7QUFFQSxVQUFVO0FBQ1Y7RUFDRSxtQkFBbUI7RUFDbkIsaUJBQWlCO0VBQ2pCLGVBQWU7RUFDZixnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxjQUFjO0VBQ2QsZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixrQkFBa0I7QUFDcEI7O0FBRUEsYUFBYTtBQUNiO0VBQ0UsbUJBQW1CO0VBQ25CLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsbUJBQW1CO0VBQ25CLFdBQVc7QUFDYjs7QUFFQTtFQUNFLFdBQVc7QUFDYiIsInNvdXJjZXNDb250ZW50IjpbIi53ZWF0aGVyLWNhcmQge1xyXG4gIGJvcmRlci1yYWRpdXM6IDIwcHg7XHJcbiAgcGFkZGluZzogMjBweDtcclxuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoMTM1ZGVnLCAjZmZmOWYwIDAlLCAjZmZmM2UwIDUwJSwgI2ZkZThjYyAxMDAlKTtcclxuICBib3gtc2hhZG93OiAwIDRweCAyMHB4IHJnYmEoMCwgMCwgMCwgMC4wNyk7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gIGdhcDogOHB4O1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICBvdmVyZmxvdzogaGlkZGVuO1xyXG4gIG1pbi1oZWlnaHQ6IDIwMHB4O1xyXG59XHJcblxyXG4vKiBDaXR5ICovXHJcbi53ZWF0aGVyLWNpdHkge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBnYXA6IDZweDtcclxuICBmb250LXNpemU6IDEycHg7XHJcbiAgY29sb3I6ICM4ODg7XHJcbiAgZm9udC13ZWlnaHQ6IDYwMDtcclxufVxyXG5cclxuLyogVGl0bGUgKi9cclxuLndlYXRoZXItdGl0bGUge1xyXG4gIGZvbnQtc2l6ZTogMjJweDtcclxuICBmb250LXdlaWdodDogODAwO1xyXG4gIGNvbG9yOiAjMWExYTJlO1xyXG59XHJcblxyXG4vKiBEZXNjcmlwdGlvbiAqL1xyXG4ud2VhdGhlci1kZXNjIHtcclxuICBmb250LXNpemU6IDEycHg7XHJcbiAgY29sb3I6ICNhYWE7XHJcbn1cclxuXHJcbi8qIEljb24gKi9cclxuLndlYXRoZXItaWNvbiB7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIHJpZ2h0OiAxNnB4O1xyXG4gIHRvcDogMTZweDtcclxufVxyXG5cclxuLndlYXRoZXItaWNvbiBpbWcge1xyXG4gIHdpZHRoOiA4MHB4O1xyXG4gIGZpbHRlcjogZHJvcC1zaGFkb3coMCA0cHggMTBweCByZ2JhKDAsIDAsIDAsIDAuMikpO1xyXG59XHJcblxyXG4vKiBUZW1wZXJhdHVyZSAqL1xyXG4ud2VhdGhlci10ZW1wIHtcclxuICBmb250LXNpemU6IDUycHg7XHJcbiAgZm9udC13ZWlnaHQ6IDkwMDtcclxuICBjb2xvcjogIzFhMWEyZTtcclxuICBsaW5lLWhlaWdodDogMTtcclxuICBtYXJnaW4tdG9wOiA4cHg7XHJcbn1cclxuXHJcbi8qIEZlZWxzIGxpa2UgKi9cclxuLndlYXRoZXItZmVlbHMge1xyXG4gIGZvbnQtc2l6ZTogMTJweDtcclxuICBjb2xvcjogI2FhYTtcclxufVxyXG5cclxuLyogU3RhdHMgKi9cclxuLndlYXRoZXItc3RhdHMge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgZ2FwOiAxMHB4O1xyXG4gIG1hcmdpbi10b3A6IDRweDtcclxufVxyXG5cclxuLyogQm94ZXMgKi9cclxuLndlYXRoZXItYm94IHtcclxuICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gIHBhZGRpbmc6IDZweCAxMnB4O1xyXG4gIGZvbnQtc2l6ZTogMTFweDtcclxuICBmb250LXdlaWdodDogNzAwO1xyXG59XHJcblxyXG4ud2VhdGhlci1ib3ggc3BhbiB7XHJcbiAgZGlzcGxheTogYmxvY2s7XHJcbiAgZm9udC1zaXplOiAxMHB4O1xyXG4gIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbiAgbWFyZ2luLWJvdHRvbTogMnB4O1xyXG59XHJcblxyXG4vKiBWYXJpYW50cyAqL1xyXG4ud2VhdGhlci1ib3guZ3JlZW4ge1xyXG4gIGJhY2tncm91bmQ6ICNiOGU5OTQ7XHJcbiAgY29sb3I6ICMzYTdhMWE7XHJcbn1cclxuXHJcbi53ZWF0aGVyLWJveC5ncmVlbiBzcGFuIHtcclxuICBjb2xvcjogIzVhOWEzYTtcclxufVxyXG5cclxuLndlYXRoZXItYm94LmdyYXkge1xyXG4gIGJhY2tncm91bmQ6ICNmMGYwZjA7XHJcbiAgY29sb3I6ICM0NDQ7XHJcbn1cclxuXHJcbi53ZWF0aGVyLWJveC5ncmF5IHNwYW4ge1xyXG4gIGNvbG9yOiAjODg4O1xyXG59Il0sInNvdXJjZVJvb3QiOiIifQ== */</style></head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div style="min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; background: linear-gradient(135deg, rgb(178, 221, 224), rgb(200, 223, 192), rgb(212, 200, 184)); transition: 0.3s;"><div style="width: 100%; max-width: 960px; padding: 20px;"><div style="width: 100%; border-radius: 28px; padding: 10px; background: rgb(244, 246, 248); backdrop-filter: none; box-shadow: rgba(0, 0, 0, 0.22) 0px 24px 80px; border: 3px solid rgb(44, 62, 80); display: flex; flex-direction: column; overflow: hidden;"><div style="display: flex; flex-direction: row; align-items: center; gap: 16px; padding: 14px 24px; background: white; border-bottom: 1px solid rgb(238, 240, 243);"><div style="display: flex; width: 100%; justify-content: space-between; align-items: center;"><div style="display: flex; align-items: center; gap: 10px;"><div style="width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, rgb(240, 147, 251), rgb(245, 87, 108)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 14px;">MB</div><div><div style="font-size: 11px; color: rgb(170, 170, 170);">Hello,</div><div style="font-size: 14px; font-weight: 800; color: rgb(26, 26, 46);">Mageshwari</div></div></div><div style="display: flex; gap: 8px; align-items: center;"><div style="padding: 6px 12px; border-radius: 20px; background: rgb(229, 231, 235); color: rgb(51, 51, 51); cursor: pointer; font-size: 12px; font-weight: 600;">Dark</div><div style="width: 36px; height: 36px; border-radius: 10px; background: rgb(247, 248, 250); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1.5px solid rgb(238, 240, 243);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path></svg></div><div style="width: 36px; height: 36px; border-radius: 10px; background: rgb(247, 248, 250); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1.5px solid rgb(238, 240, 243);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><div style="width: 36px; height: 36px; border-radius: 10px; background: rgb(247, 248, 250); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1.5px solid rgb(238, 240, 243); position: relative;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"></path></svg><div style="position: absolute; top: -4px; right: -4px; width: 16px; height: 16px; background: rgb(231, 76, 60); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 800; color: white; border: 2px solid white;">3</div></div></div></div><div style="width: 100%; display: flex; align-items: center; gap: 8px; background: rgb(247, 248, 250); border-radius: 24px; padding: 8px 16px; border: 1.5px solid rgb(238, 240, 243);"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"></path></svg><input placeholder="Search Here..." style="border: none; background: transparent; outline: none; font-size: 13px; color: rgb(85, 85, 85); width: 100%;"></div></div><div style="display: flex; flex: 1 1 0%; flex-direction: row;"><div style="width: 64px; background: white; display: flex; flex-direction: column; align-items: center; padding: 20px 0px; border-right: 1px solid rgb(238, 240, 243);"><div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, rgb(255, 140, 66), rgb(232, 119, 34)); display: flex; align-items: center; justify-content: center; box-shadow: rgba(232, 119, 34, 0.35) 0px 4px 12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C8 2 5 5 5 9c0 3 2 6 7 11 5-5 7-8 7-11 0-4-3-7-7-7zm0 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"></path></svg></div></div><div style="flex: 1 1 0%; padding: 18px; display: flex; flex-direction: column; gap: 14px;"><div style="display: grid; grid-template-columns: 2fr 3fr; gap: 14px;"><div class="weather-card"><div class="weather-city">📍 Delhi</div><div class="weather-title">Weather</div><div class="weather-desc">Haze</div><div class="weather-icon"><img alt="weather icon" src="./screenshot_files/50d@2x.png"></div><div class="weather-temp">32°C</div><div class="weather-feels">Feels like 31°C</div><div class="weather-stats"><div class="weather-box green"><span>Visibility</span>3.3 Km</div><div class="weather-box gray"><span>Humidity</span>31%</div></div></div><div style="position: relative; width: 100%; height: 100%; background: linear-gradient(135deg, rgb(78, 201, 201) 0%, rgb(45, 179, 179) 40%, rgb(59, 191, 191) 70%, rgb(90, 206, 206) 100%); border-radius: 16px; overflow: hidden; min-height: 200px;"><svg viewBox="0 0 500 260" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0px; width: 100%; height: 100%;"><path d="M60 20 Q120 10 180 30 Q200 50 190 80 Q170 100 140 90 Q100 110 80 90 Q50 70 60 20Z" fill="#e8d5a3" opacity="0.9"></path><path d="M180 15 Q260 5 310 40 Q330 60 320 90 Q290 120 250 110 Q210 100 195 70 Q175 45 180 15Z" fill="#dfc890" opacity="0.85"></path><path d="M310 25 Q370 10 420 35 Q440 55 430 85 Q400 100 370 90 Q340 80 320 60 Q305 45 310 25Z" fill="#e8d5a3" opacity="0.8"></path><path d="M200 150 Q280 135 330 165 Q345 190 320 210 Q280 225 240 210 Q205 195 200 165Z" fill="#dfc890" opacity="0.75"></path></svg><div style="position: absolute; left: 8%; top: 15%; font-size: 11px; font-weight: 600; color: rgb(26, 95, 122); background: rgba(255, 255, 255, 0.5); padding: 1px 5px; border-radius: 4px;">22°C</div><div style="position: absolute; left: 42%; top: 20%; font-size: 11px; font-weight: 600; color: rgb(26, 95, 122); background: rgba(255, 255, 255, 0.5); padding: 1px 5px; border-radius: 4px;">21°C</div><div style="position: absolute; left: 22%; top: 28%; font-size: 11px; font-weight: 600; color: rgb(26, 95, 122); background: rgba(255, 255, 255, 0.5); padding: 1px 5px; border-radius: 4px;">25°C</div><div style="position: absolute; left: 62%; top: 15%; font-size: 11px; font-weight: 600; color: rgb(26, 95, 122); background: rgba(255, 255, 255, 0.5); padding: 1px 5px; border-radius: 4px;">23°C</div><div style="position: absolute; left: 12%; top: 60%; font-size: 11px; font-weight: 600; color: rgb(26, 95, 122); background: rgba(255, 255, 255, 0.5); padding: 1px 5px; border-radius: 4px;">27°C</div><div style="position: absolute; left: 70%; top: 58%; font-size: 11px; font-weight: 600; color: rgb(26, 95, 122); background: rgba(255, 255, 255, 0.5); padding: 1px 5px; border-radius: 4px;">23°C</div><div style="position: absolute; left: 35%; top: 48%; transform: translate(-50%, -100%);"><div style="width: 14px; height: 14px; background: rgb(231, 76, 60); border-radius: 50% 50% 50% 0px; transform: rotate(-45deg); box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 6px;"></div></div><div style="position: absolute; left: 38%; top: 52%; background: white; border-radius: 10px; padding: 6px 12px; box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 16px; min-width: 130px;"><div style="font-size: 18px; font-weight: 800; color: rgb(26, 26, 46); display: flex; align-items: baseline; gap: 6px;">25°C <span style="font-size: 12px; font-weight: 600; color: rgb(85, 85, 85);">Monday</span></div><div style="font-size: 11px; color: rgb(136, 136, 136); margin-top: 1px;">Mostly Sunny</div></div><div style="position: absolute; right: 12px; top: 12px; display: flex; flex-direction: column; gap: 6px;"><div style="width: 28px; height: 28px; background: rgb(232, 119, 34); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; font-weight: 700; color: white; box-shadow: rgba(232, 119, 34, 0.4) 0px 2px 8px;">+</div><div style="width: 28px; height: 28px; background: rgb(232, 119, 34); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; font-weight: 700; color: white; box-shadow: rgba(232, 119, 34, 0.4) 0px 2px 8px;">−</div></div></div></div><div style="display: grid; grid-template-columns: 2fr 3fr 2fr; gap: 14px;"><div style="display: flex; flex-direction: column; gap: 10px;"><div style="background: white; border-radius: 14px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 10px;"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="7" fill="#FFD94A"></circle></svg><div style="flex: 1 1 0%;"><div style="font-size: 13px; font-weight: 700; color: rgb(26, 26, 46);">Bengaluru </div><div style="font-size: 11px; color: rgb(170, 170, 170);">Sunny</div></div><div style="font-size: 12px; font-weight: 700; color: rgb(232, 119, 34);">22°C / 19°C</div></div><div style="background: white; border-radius: 14px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 10px;"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="7" fill="#FFD94A"></circle></svg><div style="flex: 1 1 0%;"><div style="font-size: 13px; font-weight: 700; color: rgb(26, 26, 46);">Mumbai</div><div style="font-size: 11px; color: rgb(170, 170, 170);">Bright</div></div><div style="font-size: 12px; font-weight: 700; color: rgb(232, 119, 34);">24°C / 26°C</div></div></div><div style="background: white; border-radius: 18px; padding: 16px 18px; box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 10px; display: flex; flex-direction: column; gap: 12px;"><div style="font-size: 15px; font-weight: 800; color: rgb(26, 26, 46);">How is the<br>temperature today?</div><div style="display: flex; gap: 8px; justify-content: space-between;"><div style="flex: 1 1 0%; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 6px; border-radius: 14px; background: rgb(248, 249, 251); cursor: pointer; transition: 0.2s;"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="12" cy="14" r="5" fill="#cce4f4"></circle><circle cx="18" cy="12" r="6" fill="#b8d9f0"></circle><ellipse cx="15" cy="18" rx="9" ry="6" fill="#d0e8f8"></ellipse></svg><div style="font-size: 16px; font-weight: 800; color: rgb(26, 26, 46);">20°</div><div style="font-size: 10px; color: rgb(187, 187, 187);">Morning</div></div><div style="flex: 1 1 0%; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 6px; border-radius: 14px; background: linear-gradient(135deg, rgb(26, 26, 46), rgb(44, 62, 80)); cursor: pointer; transition: 0.2s;"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="7" fill="#FFD94A"></circle><line x1="26" y1="16" x2="29" y2="16" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="23.071067811865476" y1="23.071067811865476" x2="25.19238815542512" y2="25.192388155425117" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="16" y1="26" x2="16" y2="29" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="8.928932188134524" y1="23.071067811865476" x2="6.8076118445748826" y2="25.19238815542512" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="6" y1="16" x2="3" y2="16" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="8.928932188134523" y1="8.928932188134524" x2="6.807611844574881" y2="6.8076118445748826" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="15.999999999999998" y1="6" x2="15.999999999999998" y2="3" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="23.071067811865476" y1="8.928932188134523" x2="25.192388155425114" y2="6.807611844574881" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line></svg><div style="font-size: 16px; font-weight: 800; color: white;">24°</div><div style="font-size: 10px; color: rgb(170, 170, 170);">Afternoon</div></div><div style="flex: 1 1 0%; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 6px; border-radius: 14px; background: rgb(248, 249, 251); cursor: pointer; transition: 0.2s;"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="7" fill="#FFD94A"></circle><line x1="26" y1="16" x2="29" y2="16" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="23.071067811865476" y1="23.071067811865476" x2="25.19238815542512" y2="25.192388155425117" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="16" y1="26" x2="16" y2="29" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="8.928932188134524" y1="23.071067811865476" x2="6.8076118445748826" y2="25.19238815542512" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="6" y1="16" x2="3" y2="16" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="8.928932188134523" y1="8.928932188134524" x2="6.807611844574881" y2="6.8076118445748826" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="15.999999999999998" y1="6" x2="15.999999999999998" y2="3" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line><line x1="23.071067811865476" y1="8.928932188134523" x2="25.192388155425114" y2="6.807611844574881" stroke="#FFD94A" stroke-width="2" stroke-linecap="round"></line></svg><div style="font-size: 16px; font-weight: 800; color: rgb(26, 26, 46);">28°</div><div style="font-size: 10px; color: rgb(187, 187, 187);">Evening</div></div><div style="flex: 1 1 0%; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 6px; border-radius: 14px; background: rgb(248, 249, 251); cursor: pointer; transition: 0.2s;"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="12" cy="14" r="5" fill="#cce4f4"></circle><circle cx="18" cy="12" r="6" fill="#b8d9f0"></circle><ellipse cx="15" cy="18" rx="9" ry="6" fill="#d0e8f8"></ellipse></svg><div style="font-size: 16px; font-weight: 800; color: rgb(26, 26, 46);">22°</div><div style="font-size: 10px; color: rgb(187, 187, 187);">Night</div></div></div></div><div style="border-radius: 18px; padding: 16px; overflow: hidden; background: linear-gradient(160deg, rgb(200, 232, 106) 0%, rgb(168, 216, 64) 60%, rgb(144, 192, 48) 100%); box-shadow: rgba(144, 192, 48, 0.25) 0px 4px 16px; display: flex; flex-direction: column; position: relative; min-height: 200px;"><div style="font-size: 11px; color: rgba(255, 255, 255, 0.7); font-weight: 600; margin-bottom: 4px;">Tomorrow</div><div style="font-size: 18px; font-weight: 900; color: rgb(26, 58, 0); line-height: 1.2;">Chennai, India</div><div style="position: absolute; right: 0px; bottom: 40px; opacity: 0.9;"><svg width="90" height="110" viewBox="0 0 90 110" fill="none"><line x1="10" y1="10" x2="2" y2="40" stroke="#a8d4a8" stroke-width="1.5" opacity="0.6"></line><line x1="20" y1="15" x2="12" y2="45" stroke="#a8d4a8" stroke-width="1.5" opacity="0.6"></line><line x1="30" y1="20" x2="22" y2="50" stroke="#a8d4a8" stroke-width="1.5" opacity="0.6"></line><line x1="40" y1="25" x2="32" y2="55" stroke="#a8d4a8" stroke-width="1.5" opacity="0.6"></line><line x1="50" y1="30" x2="42" y2="60" stroke="#a8d4a8" stroke-width="1.5" opacity="0.6"></line><line x1="60" y1="35" x2="52" y2="65" stroke="#a8d4a8" stroke-width="1.5" opacity="0.6"></line><line x1="70" y1="40" x2="62" y2="70" stroke="#a8d4a8" stroke-width="1.5" opacity="0.6"></line><line x1="80" y1="45" x2="72" y2="75" stroke="#a8d4a8" stroke-width="1.5" opacity="0.6"></line><circle cx="52" cy="40" r="8" fill="#2d2d2d"></circle><rect x="38" y="50" width="28" height="22" rx="4" fill="#e87722"></rect><rect x="30" y="72" width="12" height="18" rx="3" fill="#333"></rect><rect x="48" y="72" width="12" height="18" rx="3" fill="#333"></rect><path d="M30 38 Q52 15 74 38" fill="#7b4f2e" stroke="#5a3a20" stroke-width="2"></path><line x1="52" y1="38" x2="52" y2="60" stroke="#5a3a20" stroke-width="2.5"></line><rect x="62" y="70" width="18" height="22" rx="3" fill="#666"></rect><rect x="66" y="67" width="10" height="5" rx="2" fill="#888"></rect><line x1="62" y1="82" x2="80" y2="82" stroke="#555" stroke-width="1.5"></line><line x1="20" y1="92" x2="80" y2="92" stroke="#5a8a5a" stroke-width="2" opacity="0.5"></line></svg></div><div style="margin-top: auto; z-index: 1; padding-top: 60px;"><div style="font-size: 26px; font-weight: 900; color: rgb(26, 58, 0);">25°C</div><div style="display: inline-block; background: rgba(255, 255, 255, 0.35); border-radius: 20px; padding: 2px 10px; font-size: 11px; font-weight: 700; color: rgb(26, 58, 0); margin-top: 4px;">Rainy</div></div></div></div></div></div></div></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  
+
+</body></html>
