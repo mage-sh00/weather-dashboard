@@ -1,4 +1,3 @@
-// HourlyTemp — shows Morning / Afternoon / Evening / Night temperatures
 import { useState } from "react";
 
 const SunnyIcon = () => (
@@ -24,51 +23,65 @@ const CloudyIcon = () => (
   </svg>
 );
 
-// 👉 Later: replace with real hourly forecast from API
-const hourlyData = [
-  { label: "Morning",   temp: "20°", icon: "cloudy" },
-  { label: "Afternoon", temp: "24°", icon: "sunny"  },
-  { label: "Evening",   temp: "28°", icon: "sunny"  },
-  { label: "Night",     temp: "22°", icon: "cloudy" },
-];
+const getSlotLabel = (hour) => {
+  if (hour >= 5 && hour < 12) return "Morning";
+  if (hour >= 12 && hour < 17) return "Afternoon";
+  if (hour >= 17 && hour < 21) return "Evening";
+  return "Night";
+};
 
-export default function HourlyTemp() {
-  const [activeSlot, setActiveSlot] = useState(1); // Afternoon is default
+export default function HourlyTemp({ forecast }) {
+  const [activeSlot, setActiveSlot] = useState(0);
+
+  const slots = forecast?.list
+    ? (() => {
+        const seen = new Set();
+        const result = [];
+        for (const item of forecast.list) {
+          const date = new Date(item.dt * 1000);
+          const today = new Date();
+          if (date.toDateString() !== today.toDateString()) continue;
+          const label = getSlotLabel(date.getHours());
+          if (seen.has(label)) continue;
+          seen.add(label);
+          result.push({
+            label,
+            temp: `${Math.round(item.main.temp)}°`,
+            icon: item.weather[0].main === "Clear" ? "sunny" : "cloudy",
+          });
+        }
+        return result.length > 0 ? result : null;
+      })()
+    : null;
+
+  const hourlyData = slots || [
+    { label: "Morning",   temp: "--°", icon: "cloudy" },
+    { label: "Afternoon", temp: "--°", icon: "sunny"  },
+    { label: "Evening",   temp: "--°", icon: "sunny"  },
+    { label: "Night",     temp: "--°", icon: "cloudy" },
+  ];
 
   return (
     <div style={{
-      background: "white",
-      borderRadius: 18,
+      background: "white", borderRadius: 18,
       padding: "16px 18px",
       boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
-      display: "flex",
-      flexDirection: "column",
-      gap: 12,
+      display: "flex", flexDirection: "column", gap: 12,
     }}>
-
-      {/* Header */}
       <div style={{ fontSize: 15, fontWeight: 800, color: "#1a1a2e" }}>
         How is the<br />temperature today?
       </div>
-
-      {/* Time Slots */}
       <div style={{ display: "flex", gap: 8, justifyContent: "space-between" }}>
         {hourlyData.map((slot, i) => (
-          <div
-            key={i}
-            onClick={() => setActiveSlot(i)}
-            style={{
-              flex: 1,
-              display: "flex", flexDirection: "column", alignItems: "center", gap: 6,
-              padding: "10px 6px",
-              borderRadius: 14,
-              background: activeSlot === i
-                ? "linear-gradient(135deg,#1a1a2e,#2c3e50)"
-                : "#f8f9fb",
-              cursor: "pointer",
-              transition: "all 0.2s",
-            }}
-          >
+          <div key={i} onClick={() => setActiveSlot(i)} style={{
+            flex: 1, display: "flex", flexDirection: "column",
+            alignItems: "center", gap: 6, padding: "10px 6px",
+            borderRadius: 14,
+            background: activeSlot === i
+              ? "linear-gradient(135deg,#1a1a2e,#2c3e50)"
+              : "#f8f9fb",
+            cursor: "pointer", transition: "all 0.2s",
+          }}>
             {slot.icon === "sunny" ? <SunnyIcon /> : <CloudyIcon />}
             <div style={{ fontSize: 16, fontWeight: 800, color: activeSlot === i ? "white" : "#1a1a2e" }}>
               {slot.temp}
@@ -79,7 +92,6 @@ export default function HourlyTemp() {
           </div>
         ))}
       </div>
-
     </div>
   );
 }
