@@ -1,58 +1,39 @@
 # Weather Dashboard
 
-A clean and responsive weather dashboard built with React, fetching real-time data from the OpenWeather API.
+A responsive weather dashboard built with React, 
+fetching real-time data from the OpenWeatherMap API.
 
 ## Live Demo
-
-https://weather-dashboard-2fppq2i81-mage-sh00s-projects.vercel.app
+https://weather-dashboard-omega-ecru.vercel.app
 
 ## Features
-
-* Search weather by city name
-* Displays temperature, humidity, and visibility
-* Real-time API data integration
-* Responsive and modern UI
-* Error handling for invalid cities
+- Real-time weather via OpenWeatherMap REST API
+- Custom useWeather hook for async data fetching
+- Custom useIsMobile hook for responsive layout
+- Hourly forecast from /forecast endpoint
+- Tomorrow's forecast with real API data
+- localStorage persists last searched city
+- Animated skeleton loader for loading state
+- Styled error handling for invalid cities
+- Dark mode toggle
+- Deployed on Vercel with CI/CD
 
 ## Tech Stack
-
-* React.js
-* OpenWeather API
-* CSS
-* Vercel (Deployment)
-
-  
-Preview
-
-![Weather Dashboard](./image.png)
-
-
+- React.js
+- OpenWeatherMap API
+- Custom Hooks
+- CSS
+- Vercel
 
 ## Getting Started
-
-Clone the repository:
-
-```bash
 git clone https://github.com/mage-sh00/weather-dashboard.git
 cd weather-dashboard
 npm install
 npm start
-```
 
 ## Environment Variables
-
-Create a `.env` file and add:
-
-```env
+Create a .env file and add:
 REACT_APP_WEATHER_API_KEY=your_api_key_here
-```
-
-## Deployment
-
-The app is deployed using Vercel.
 
 ## Author
-
 Mageshwari
-
-
